@@ -1,0 +1,30 @@
+# build outputs
+build/
+*.elf
+*.o
+*.d
+*.map
+*.sym
+*.3gx
+# keep the release binaries
+!releases/**/*.3gx
+# test scratch
+__pycache__/
+*.pyc
+# logs and plugin data written on the SD card
+mc3d_log*
+mc3d_profile*
+*.csv
+CTRPFData.bin
+# game data (never commit)
+*.cia
+*.3ds
+*.cxi
+*.otx
+*.bcfnt
+code.bin
+romfs/
+exefs/
+crashdumps/
+dump/
+extracted/

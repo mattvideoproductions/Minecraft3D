@@ -1,0 +1,6 @@
+* text=auto
+*.3gx binary
+*.sym binary
+*.elf binary
+*.png binary
+*.jpg binary

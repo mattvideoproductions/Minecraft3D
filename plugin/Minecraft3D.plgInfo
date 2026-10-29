@@ -1,0 +1,29 @@
+Author: Minecraft 3D mod team
+
+Version:
+    Major: 0
+    Minor: 3
+    Revision: 3
+
+Targets: # Low title IDs this plugin is compatible with
+    - 0x001B8700   # Minecraft: New Nintendo 3DS Edition (USA)
+
+Title: Minecraft 3D mod
+
+Summary: Stereoscopic 3D and a performance profiler for Minecraft NN3DS (USA)
+
+Description: |
+  Minecraft 3D mod v0.3.3
+  Stereoscopic 3D: on v1.0 the game's built-in (unused) right-eye
+  renderer; on update v9.12.0 Comfort 3D (both eyes drawn in the
+  same frame, 30 fps), alternate eyes or a flat plane. Render
+  distance and fast-leaves options, an A/B button swap. Plus a
+  performance profiler.
+  The plugin verifies the game code against its address tables
+  and stays idle on any build it does not know.
+
+Compatibility: Any
+
+MemorySize: 5MiB
+
+UsePrivateMemory: true
