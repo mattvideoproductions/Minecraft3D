@@ -67,10 +67,10 @@ mattvideoproductions as project lead and hardware tester on a New 3DS XL.
 
 Built with:
 
-- [CTRPluginFramework](https://gitlab.com/thepixellizeross/ctrpluginframework) and 3gxtool (GPL-3.0; see the upstream repository)
+- [CTRPluginFramework](https://gitlab.com/thepixellizeross/ctrpluginframework) and 3gxtool (see upstream for license terms)
 - [libctru](https://github.com/devkitPro/libctru) (zlib license)
 - [devkitPro](https://devkitpro.org/) (devkitARM toolchain; licenses per component)
-- [Luma3DS](https://github.com/LumaTeam/Luma3DS) plugin loader (GPL-3.0 with additional terms)
+- [Luma3DS](https://github.com/LumaTeam/Luma3DS) plugin loader (see upstream for license terms)
 
 Public community projects were read as background research only. No code from them is
 included, but they helped orient the reverse engineering:
