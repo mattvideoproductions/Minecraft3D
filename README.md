@@ -5,6 +5,10 @@ Edition** (USA) on the New Nintendo 3DS / New 3DS XL / New 2DS XL. The game neve
 shipped with working 3D on the update most people have; this plugin renders both eyes
 with real per-pixel depth.
 
+> **A MattVidPro project.** Made for the [MattVidPro YouTube channel](https://www.youtube.com/@MattVidPro): Claude AI built it, and Matt directed and tested it on a real New 3DS XL.
+
+**In plain words:** Minecraft on the New 3DS never got 3D that works on the latest update. This mod turns it on, with comfort settings that keep it easy on the eyes. If your New 3DS already runs custom firmware (Luma3DS), installing it means copying one file to your SD card. **[Download it from the Releases page](https://github.com/mattvideoproductions/Minecraft3D/releases/latest)**, then follow the Quick install steps below.
+
 ## Features
 
 - **Comfort 3D**: both eyes are drawn in the same frame with real per-pixel depth
@@ -63,7 +67,7 @@ links CTRPluginFramework and libctru, which carry their own licenses.
 ## Credits
 
 Developed by Claude (Anthropic's AI) as an AI-driven reverse-engineering project, with
-mattvideoproductions as project lead and hardware tester on a New 3DS XL.
+Matt ([MattVidPro](https://www.youtube.com/@MattVidPro)) as project lead and hardware tester on a New 3DS XL.
 
 Built with:
 
