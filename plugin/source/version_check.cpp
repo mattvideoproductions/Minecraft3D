@@ -124,13 +124,19 @@ namespace mc3d::version
         s_current = nullptr;
         s_tried = 0;
 
-        if (Process::GetTitleID() != game::kTitleId)
+        const u64 tid = Process::GetTitleID();
+        if (!game::IsKnownTitle(tid))
             return s_status = Status::WrongTitle;
 
         for (u32 i = 0; i < game::kVersionCount && i < kMaxTables; i++)
         {
-            s_mismatch[i] = Check(*game::kVersions[i]);
             s_tried = i + 1;
+            if (game::kVersions[i]->titleId != tid)
+            {
+                s_mismatch[i] = kOtherRegion;   // never read another region's addresses
+                continue;
+            }
+            s_mismatch[i] = Check(*game::kVersions[i]);
             if (s_mismatch[i] == 0)
             {
                 s_current = game::kVersions[i];
@@ -154,7 +160,7 @@ namespace mc3d::version
         {
             case Status::NotChecked:  return "not checked";
             case Status::Ok:          return "OK";
-            case Status::WrongTitle:  return "wrong title (not Minecraft NN3DS USA)";
+            case Status::WrongTitle:  return "wrong title (not Minecraft NN3DS USA/EUR)";
             case Status::Unsupported: return "unsupported game version";
         }
         return "?";

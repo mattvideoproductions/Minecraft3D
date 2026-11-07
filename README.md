@@ -3,7 +3,7 @@
 > 🎬 **Watch it in action:** [Claude Reverse Engineered Two 3DS Games to Add Real 3D](https://youtu.be/o5iRKvXZEcY) (YouTube)
 
 A Luma3DS 3GX plugin that adds real stereoscopic 3D to **Minecraft: New Nintendo 3DS
-Edition** (USA) on the New Nintendo 3DS / New 3DS XL / New 2DS XL. The game never
+Edition** (USA and Europe) on the New Nintendo 3DS / New 3DS XL / New 2DS XL. The game never
 shipped with working 3D on the update most people have; this plugin renders both eyes
 with real per-pixel depth.
 
@@ -34,14 +34,15 @@ with real per-pixel depth.
 
 - New Nintendo 3DS / New 3DS XL / New 2DS XL with Luma3DS (plugin loader built in).
   The Old 3DS is not supported.
-- **Minecraft: New Nintendo 3DS Edition, USA** (title ID `00040000001B8700`),
-  **updated to v9.12.0 (game 1.9.19)**. Other regions and versions are not supported;
+- **Minecraft: New Nintendo 3DS Edition** with the final update (game 1.9.19):
+  **USA** (title ID `00040000001B8700`, update v9.12.0) or **Europe/Australia**
+  (title ID `000400000017CA00`, update v9.11.0). Other regions and versions are not supported;
   the plugin verifies the game's code and stays idle on anything it does not know.
 
 ## Quick install
 
-1. Copy `releases/v0.3.3/Minecraft3D.3gx` to
-   `SD:/luma/plugins/00040000001B8700/Minecraft3D.3gx`.
+1. Copy `Minecraft3D.3gx` to `SD:/luma/plugins/<title ID>/Minecraft3D.3gx`, where
+   `<title ID>` is `00040000001B8700` (USA) or `000400000017CA00` (Europe/Australia).
 2. In the Rosalina menu (L + D-pad Down + SELECT), set "Plugin loader" to Enabled.
 3. Launch Minecraft, push the 3D slider up, and press **SELECT** for the plugin menu.
 

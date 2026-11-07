@@ -1,6 +1,6 @@
 #pragma once
 // Per-hook enable flags, read once in PatchProcess from
-//   /luma/plugins/00040000001B8700/mc3d_cfg.txt
+//   /luma/plugins/<title ID>/mc3d_cfg.txt (USA 00040000001B8700, EUR 000400000017CA00)
 // Format: one `key=value` per line, `#` starts a comment. A leading UTF-8 BOM,
 // CRLF line ends and spaces around `=` are accepted (v0.1.1). Recognised:
 //   hooks=present,init,b2l,swap,proj,prof     (comma or space separated)

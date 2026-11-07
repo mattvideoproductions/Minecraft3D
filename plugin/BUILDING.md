@@ -6,6 +6,10 @@ See "Building from source" in [../INSTALL.md](../INSTALL.md). Short version:
 - Put `libctrpf/` and `3gxtool-1.3/` in a `toolchain/` folder two levels above `plugin/`
   (`<projects>/toolchain/`, with this repo at `<projects>/<repo>/`), or pass
   `TOOLCHAIN=`, `CTRPFLIB=` or `GXTOOL=` to `make`.
+- With the devkitPro `libctrpf` package (in `C:\devkitPro\libctrpf`) and 3gxtool in
+  the repo's `tools/` folder, build from the devkitPro msys2 shell with:
+  `./build.sh release CTRPFLIB=/opt/devkitpro/libctrpf GXTOOL=/c/git/Minecraft3D/tools/3gxtool.exe`
+  (`compat/types.h` fills in the `types.h` that package's headers expect).
 - Windows: `./build.ps1` (release), `./build.ps1 debug`, `./build.ps1 clean`.
 - msys2/Linux: `./build.sh`, `./build.sh debug`, `./build.sh clean`.
 - Output: `plugin/Minecraft3D.3gx`.

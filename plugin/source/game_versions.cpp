@@ -22,6 +22,7 @@ namespace mc3d::game
     };
     const GameVersion kVersion_v1_0 = {
         .name = "v1.0 (base)",
+        .titleId = kTitleIdUSA,
         .stereoKind = StereoKind::KillSwitch,
         .textStart = 0x00100000,
         .textEnd = 0x00680214,
@@ -112,7 +113,7 @@ namespace mc3d::game
     // Every address verified against extracted/update/content0/exefs/code.bin
     // (capstone disassembly + the project's design notes (not in this repo) decompiles); every signature
     // below is unique in that code.bin. See the project's design notes (not in this repo) "v9.12.0 table".
-    static const Sig kSigs_v9_12_0[] = {
+    static constexpr Sig kSigs_v9_12_0[] = {
         { 0x004F87C4, { 0xF0, 0x47, 0x2D, 0xE9, 0x00, 0x40, 0xA0, 0xE1, 0xF0, 0x93, 0x9F, 0xE5, 0x02, 0x8B, 0x2D, 0xED, 0x30, 0xD0, 0x4D, 0xE2, 0x18, 0x10, 0x8D, 0xE2 } }, // fnPresent
         { 0x0031DD8C, { 0xF0, 0x47, 0x2D, 0xE9, 0x00, 0x40, 0xA0, 0xE1, 0x02, 0x80, 0xA0, 0xE1, 0x01, 0x50, 0xA0, 0xE1, 0x03, 0x90, 0xA0, 0xE1, 0x02, 0x8B, 0x2D, 0xED } }, // fnWorldRender
         { 0x004F5CEC, { 0xF0, 0x40, 0x2D, 0xE9, 0x00, 0x40, 0xA0, 0xE1, 0x84, 0xD0, 0x4D, 0xE2, 0x38, 0x01, 0xD0, 0xE5, 0x03, 0x50, 0xA0, 0xE1, 0x02, 0x60, 0xA0, 0xE1 } }, // fnDraw
@@ -161,8 +162,10 @@ namespace mc3d::game
         { 0x0011298C, { 0x70, 0x40, 0x2D, 0xE9, 0x00, 0x50, 0xA0, 0xE1, 0x28, 0xD0, 0x4D, 0xE2, 0x00, 0x00, 0xE0, 0xE3, 0x01, 0x40, 0xA0, 0xE1, 0x00, 0x10, 0xA0, 0xE1 } }, // fnPadReadLatest
         { 0x00112B34, { 0xF0, 0x43, 0x2D, 0xE9, 0x8C, 0xD0, 0x4D, 0xE2, 0x00, 0x50, 0xA0, 0xE1, 0x01, 0x70, 0xA0, 0xE1, 0x02, 0x60, 0xA0, 0xE1, 0x00, 0x80, 0xA0, 0xE3 } }, // fnPadRead
     };
-    const GameVersion kVersion_v9_12_0 = {
+    // constexpr so the EU copy below is built at compile time (no static constructor).
+    constexpr GameVersion kVersion_v9_12_0 = {
         .name = "v9.12.0 (1.9.19)",
+        .titleId = kTitleIdUSA,
         .stereoKind = StereoKind::FlatParallax,
         .textStart = 0x00100000,
         .textEnd = 0x00918824,
@@ -330,9 +333,31 @@ namespace mc3d::game
         .fnPadRead = 0x00112B34,
     };
 
+    // A build of another region with byte-identical code: same table, own name and title ID.
+    static constexpr GameVersion SameCodeAs(GameVersion v, const char *name, u64 titleId)
+    {
+        v.name = name;
+        v.titleId = titleId;
+        return v;
+    }
+
+    // ---- EU/AUS v9.11.0 (title 000400000017CA00, update 0004000E0017CA00 v9392, game 1.9.19) ----
+    // The EUR update is numbered 9.11.0 but carries the same 1.9.19 code as
+    // USA v9.12.0. Checked against the EUR update's decrypted code.bin
+    // (2026-11-07): identical exheader segments (text 0x818824, ro 0x10F464,
+    // data 0x10B70, bss 0x1060C0); all 43 signatures above match at the same
+    // addresses and each is unique; every site word and literal-pool word
+    // matches; and the struct offsets used outside this table (dev+0x88/+0xB8,
+    // res+0x1C, nngxState+0xA0/+0x124, cl+0x18/+0x20, ExpHeap +0x18/+0x1C/+0x24)
+    // were seen in the EUR disassembly. If a future EUR build differs, give it
+    // its own table instead.
+    constexpr GameVersion kVersion_eu_v9_11_0 = SameCodeAs(kVersion_v9_12_0, "EU v9.11.0 (1.9.19)", kTitleIdEUR);
+
+    // Only tables whose titleId is the running title are tried (version_check.cpp).
     const GameVersion *const kVersions[] = {
         &kVersion_v9_12_0,
         &kVersion_v1_0,
+        &kVersion_eu_v9_11_0,
     };
     const u32 kVersionCount = sizeof(kVersions) / sizeof(kVersions[0]);
 }

@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------------------
-# Minecraft3D.3gx - Luma3DS game plugin for Minecraft: New Nintendo 3DS Edition (USA, 00040000001B8700)
+# Minecraft3D.3gx - Luma3DS game plugin for Minecraft: New Nintendo 3DS Edition (USA 00040000001B8700, EUR 000400000017CA00)
 #
 # Built against CTRPluginFramework (libctrpf) + 3gxtool, both kept OUTSIDE
 # C:\devkitPro under  <projects>/toolchain/  (see BUILDING.md).
@@ -56,7 +56,11 @@ export LD		:=	$(CXX)
 export OFILES	:=	$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
-					-I$(CURDIR)/$(BUILD)
+					-I$(CURDIR)/$(BUILD) \
+					-idirafter $(CURDIR)/compat
+# (-idirafter compat: the devkitPro libctrpf package's headers #include
+#  "types.h" without shipping one; compat/types.h supplies it. Searched last,
+#  so it never shadows another header.)
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 
 .PHONY: all release debug clean

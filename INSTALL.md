@@ -9,8 +9,10 @@ The mod contains no game files. You need your own legally owned copy of the game
 
 - A New 3DS / New 3DS XL / New 2DS XL running custom firmware with Luma3DS. The plugin
   loader is built into Luma3DS, so nothing else is needed. Old 3DS is not supported.
-- **Minecraft: New Nintendo 3DS Edition, USA version** (title ID `00040000001B8700`),
-  **updated to v9.12.0** (game 1.9.19, the final update).
+- **Minecraft: New Nintendo 3DS Edition** with its final update (game 1.9.19), one of:
+  - **USA**: title ID `00040000001B8700`, update **v9.12.0**
+  - **Europe/Australia**: title ID `000400000017CA00`, update **v9.11.0** (same game
+    code as the USA v9.12.0, only numbered differently)
 
 Other regions or versions are not patched: the plugin checks the game's code against its
 address tables and, if it does not match, stays idle (nothing is broken, nothing works).
@@ -18,12 +20,13 @@ address tables and, if it does not match, stays idle (nothing is broken, nothing
 ## SD card layout
 
 ```
-SD:/luma/plugins/00040000001B8700/Minecraft3D.3gx     <- the plugin (from releases/v0.3.3/)
-SD:/luma/plugins/00040000001B8700/mc3d_cfg.txt        <- optional config (see below)
-SD:/luma/plugins/00040000001B8700/mc3d_log.txt        <- written by the plugin
+SD:/luma/plugins/<title ID>/Minecraft3D.3gx     <- the plugin
+SD:/luma/plugins/<title ID>/mc3d_cfg.txt        <- optional config (see below)
+SD:/luma/plugins/<title ID>/mc3d_log.txt        <- written by the plugin
 ```
 
-The folder name is the title ID. Create any missing folders.
+The folder name is the title ID of your copy: `00040000001B8700` (USA) or
+`000400000017CA00` (Europe/Australia). Create any missing folders.
 
 ## Install
 
@@ -90,7 +93,7 @@ rd=4
 
 ## Log file
 
-The plugin writes `SD:/luma/plugins/00040000001B8700/mc3d_log.txt` without any setting:
+The plugin writes `SD:/luma/plugins/<title ID>/mc3d_log.txt` without any setting:
 one `====` line per start with the settings in use, one `SW` line for every change of the
 top-screen picture (3D / held / 2D / flat), `RD` lines for render-distance changes or
 refusals, and an `FB` summary every 10 s. Over 1 MiB it is renamed to `mc3d_log_old.txt`
@@ -105,8 +108,8 @@ Replace `Minecraft3D.3gx` with the new file. To remove it, delete the file or tu
 ## Troubleshooting
 
 - **No 3D at all**: check the plugin loader is enabled, the file is in the title-ID
-  folder, and the game is the USA version at v9.12.0. "Plugin status" in the menu reports
-  whether the version table matched.
+  folder, and the game is USA v9.12.0 or Europe v9.11.0. "Plugin status" in the menu
+  reports whether the version table matched.
 - **Eye strain or double vision**: lower the 3D slider or use the Gentle or Window preset.
 - **Render distance stuck at 4**: this is deliberate, see Known issues in the README.
 

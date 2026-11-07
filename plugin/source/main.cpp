@@ -1,5 +1,5 @@
 // Minecraft 3D mod - Luma3DS 3GX plugin (CTRPluginFramework)
-// Minecraft: New Nintendo 3DS Edition, USA 00040000001B8700.
+// Minecraft: New Nintendo 3DS Edition, USA 00040000001B8700 / EUR 000400000017CA00.
 #include <CTRPluginFramework.hpp>
 #include <cstring>
 #include <string>
@@ -389,8 +389,9 @@ namespace CTRPluginFramework
                " (" + version::VersionName() + ")\n";
         for (u32 i = 0; i < version::TablesTried(); i++)
             msg += Utils::Format("  table %s: %s\n", game::kVersions[i]->name,
-                                 version::FirstMismatch(i) ? Utils::Format("mismatch at %08lX", version::FirstMismatch(i)).c_str()
-                                                           : "match");
+                                 version::FirstMismatch(i) == version::kOtherRegion ? "other region"
+                                 : version::FirstMismatch(i) ? Utils::Format("mismatch at %08lX", version::FirstMismatch(i)).c_str()
+                                                             : "match");
         msg += std::string("Patching: ") + (mem::PatchingAllowed() ? "enabled" : "LOCKED") + "\n";
         msg += Utils::Format("Hooks enabled: %03lX (%s)\n", cfg::Hooks(),
                              cfg::FromFile() ? "mc3d_cfg.txt" : "default: all");
@@ -567,7 +568,7 @@ namespace CTRPluginFramework
         PluginMenu *menu = new PluginMenu("Minecraft 3D mod", 0, 3, 3,
             MC3D_NAME "\n"
             "Adds stereoscopic 3D to Minecraft: New Nintendo 3DS\n"
-            "Edition (USA) and a performance profiler.\n"
+            "Edition (USA/EUR) and a performance profiler.\n"
             "v0.3: Comfort 3D - both eyes drawn in the same\n"
             "frame at a steady 30 fps.\n"
             "Press Select to open/close this menu.");
@@ -720,7 +721,7 @@ namespace CTRPluginFramework
         perf->Append(e_log = new MenuEntry("Log stats to SD", NoOp,
             "Writes one line of stats per second (same numbers\n"
             "plus 3D and OSD on/off) to the end of\n"
-            "luma/plugins/00040000001B8700/mc3d_log.txt\n"
+            "luma/plugins/<title ID>/mc3d_log.txt\n"
             "Nothing is shown on screen. Never overwrites."));
         perf->Append(new MenuEntry("Show latest stats", nullptr, ShowStatsMenuFunc,
             "Opens a box with the full numbers for the last\n"
@@ -728,7 +729,7 @@ namespace CTRPluginFramework
         perf->Append(new MenuEntry("Record 60 s to CSV", nullptr, DumpMenuFunc,
             "Records 60 seconds (one row per second) into a new\n"
             "spreadsheet file mc3d_profile_001.csv, _002, ...\n"
-            "in luma/plugins/00040000001B8700/. Each recording\n"
+            "in luma/plugins/<title ID>/. Each recording\n"
             "gets the next number; old files are never replaced."));
         menu->Append(perf);
         if (mc3d::cfg::StereoOpt("log") == 1)

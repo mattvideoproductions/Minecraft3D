@@ -8,7 +8,7 @@ namespace mc3d::version
     {
         NotChecked,
         Ok,
-        WrongTitle,     // not Minecraft NN3DS USA
+        WrongTitle,     // not Minecraft NN3DS USA or EUR
         Unsupported,    // no address table matched this build
     };
 
@@ -23,7 +23,9 @@ namespace mc3d::version
     const char                *StatusString(Status s);
     const char                *VersionName();      // "v1.0 (base)" or "unknown"
 
-    // Diagnostics for the status box: per table, the first mismatching address.
+    // Diagnostics for the status box: per table, the first mismatching address
+    // (kOtherRegion: the table is for another title ID and was not checked).
+    constexpr u32 kOtherRegion = 0xFFFFFFFFu;
     u32         TablesTried();
     u32         FirstMismatch(u32 table);
 }
