@@ -1,10 +1,12 @@
 #pragma once
-// Per-game-version address tables for Minecraft: New Nintendo 3DS Edition (USA 00040000001B8700).
+// Per-game-version address tables for Minecraft: New Nintendo 3DS Edition
+// (USA 00040000001B8700, EUR/AUS 000400000017CA00).
 //
 // One GameVersion per supported build. At boot version::Select() picks the
 // first table whose every signature (24 bytes at the expected address), site
 // instruction word and literal-pool word matches the running code. If none
-// matches, the plugin stays idle and patches nothing.
+// matches, the plugin stays idle and patches nothing. Only tables whose
+// titleId is the running title are tried (each region is its own build).
 //
 // A field left at 0 means "not known for this build": the feature that needs
 // it is switched off, the rest still works. So a partially ported table (for
@@ -19,7 +21,10 @@
 
 namespace mc3d::game
 {
-    constexpr u64 kTitleId = 0x00040000001B8700ULL;
+    constexpr u64 kTitleIdUSA = 0x00040000001B8700ULL;
+    constexpr u64 kTitleIdEUR = 0x000400000017CA00ULL;   // Europe + Australia (KTR-P-BD3P)
+
+    constexpr bool IsKnownTitle(u64 tid) { return tid == kTitleIdUSA || tid == kTitleIdEUR; }
 
     struct Sig
     {
@@ -37,6 +42,7 @@ namespace mc3d::game
     struct GameVersion
     {
         const char *name;
+        u64         titleId;    // kTitleIdUSA / kTitleIdEUR
         StereoKind  stereoKind;
 
         // exheader segments (flat at 0x100000); dataEnd includes .bss

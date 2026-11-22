@@ -3,13 +3,13 @@
 > 🎬 **Watch it in action:** [Claude Reverse Engineered Two 3DS Games to Add Real 3D](https://youtu.be/o5iRKvXZEcY) (YouTube)
 
 A Luma3DS 3GX plugin that adds real stereoscopic 3D to **Minecraft: New Nintendo 3DS
-Edition** (USA) on the New Nintendo 3DS / New 3DS XL / New 2DS XL. The game never
+Edition** (USA and Europe) on the New Nintendo 3DS / New 3DS XL / New 2DS XL. The game never
 shipped with working 3D on the update most people have; this plugin renders both eyes
 with real per-pixel depth.
 
 > **A MattVidPro project.** Made for the [MattVidPro YouTube channel](https://www.youtube.com/@MattVidPro): Claude AI built it, and Matt directed and tested it on a real New 3DS XL.
 
-**In plain words:** Minecraft on the New 3DS never got 3D that works on the latest update. This mod turns it on, with comfort settings that keep it easy on the eyes. If your New 3DS already runs custom firmware (Luma3DS), installing it means copying one file to your SD card. **[Download it from the Releases page](https://github.com/mattvideoproductions/Minecraft3D/releases/latest)**, then follow the Quick install steps below.
+**In plain words:** Minecraft on the New 3DS never got 3D that works on the latest update. This mod turns it on, with comfort settings that keep it easy on the eyes. If your New 3DS already runs custom firmware (Luma3DS), installing it means copying one file to your SD card. Follow the Quick install steps below for your region.
 
 ## Features
 
@@ -34,16 +34,19 @@ with real per-pixel depth.
 
 - New Nintendo 3DS / New 3DS XL / New 2DS XL with Luma3DS (plugin loader built in).
   The Old 3DS is not supported.
-- **Minecraft: New Nintendo 3DS Edition, USA** (title ID `00040000001B8700`),
-  **updated to v9.12.0 (game 1.9.19)**. Other regions and versions are not supported;
+- **Minecraft: New Nintendo 3DS Edition** with the final update (game 1.9.19):
+  **USA** (title ID `00040000001B8700`, update v9.12.0) or **Europe/Australia**
+  (title ID `000400000017CA00`, update v9.11.0). Other regions and versions are not supported;
   the plugin verifies the game's code and stays idle on anything it does not know.
 
 ## Quick install
 
-1. Copy `releases/v0.3.3/Minecraft3D.3gx` to
-   `SD:/luma/plugins/00040000001B8700/Minecraft3D.3gx`.
-2. In the Rosalina menu (L + D-pad Down + SELECT), set "Plugin loader" to Enabled.
-3. Launch Minecraft, push the 3D slider up, and press **SELECT** for the plugin menu.
+1. Get `Minecraft3D.3gx` for your region. The [v0.3.3 release](https://github.com/mattvideoproductions/Minecraft3D/releases/tag/v0.3.3)
+   supports USA only. For Europe/Australia, [build the plugin from the current source](plugin/BUILDING.md).
+2. Copy it to `SD:/luma/plugins/<title ID>/Minecraft3D.3gx`, where
+   `<title ID>` is `00040000001B8700` (USA) or `000400000017CA00` (Europe/Australia).
+3. In the Rosalina menu (L + D-pad Down + SELECT), set "Plugin loader" to Enabled.
+4. Launch Minecraft, push the 3D slider up, and press **SELECT** for the plugin menu.
 
 Full instructions, the config file and building from source: see [INSTALL.md](INSTALL.md).
 A test checklist for this release is in [releases/v0.3.3/HOW_TO_TEST.md](releases/v0.3.3/HOW_TO_TEST.md).

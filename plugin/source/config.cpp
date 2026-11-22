@@ -1,4 +1,5 @@
 #include "config.hpp"
+#include "paths.hpp"
 
 #include <cstring>
 #include <CTRPluginFramework.hpp>
@@ -9,7 +10,6 @@ namespace mc3d::cfg
 {
     namespace
     {
-        constexpr const char *kPath = "/luma/plugins/00040000001B8700/mc3d_cfg.txt";
         u32  s_hooks = kAll;
         bool s_fromFile = false;
         bool s_irrst = false;
@@ -79,7 +79,7 @@ namespace mc3d::cfg
     void Load()
     {
         File f;
-        if (File::Open(f, kPath, File::READ) != File::SUCCESS)
+        if (File::Open(f, paths::Config(), File::READ) != File::SUCCESS)
             return;
         char buf[512];
         const u64 size = f.GetSize();
@@ -141,7 +141,7 @@ namespace mc3d::cfg
     bool        Hook(u32 bits) { return (s_hooks & bits) == bits; }
     u32         Hooks()        { return s_hooks; }
     bool        FromFile()     { return s_fromFile; }
-    const char *Path()         { return kPath; }
+    const char *Path()         { return paths::Config(); }
     bool        IrrstAllowed() { return s_irrst; }
     int StereoOpt(const char *key)
     {

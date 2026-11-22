@@ -7,10 +7,11 @@ Version:
 
 Targets: # Low title IDs this plugin is compatible with
     - 0x001B8700   # Minecraft: New Nintendo 3DS Edition (USA)
+    - 0x0017CA00   # Minecraft: New Nintendo 3DS Edition (EUR/AUS)
 
 Title: Minecraft 3D mod
 
-Summary: Stereoscopic 3D and a performance profiler for Minecraft NN3DS (USA)
+Summary: Stereoscopic 3D and a performance profiler for Minecraft NN3DS (USA/EUR)
 
 Description: |
   Minecraft 3D mod v0.3.3

@@ -7,6 +7,7 @@
 #include "comfort.hpp"
 #include "world_opts.hpp"
 #include "pica_shadow.hpp"
+#include "paths.hpp"
 
 #include <3ds.h>
 #include <CTRPluginFramework.hpp>
@@ -30,10 +31,8 @@ namespace mc3d::prof
 {
     namespace
     {
-        constexpr const char *kLogPath = "/luma/plugins/00040000001B8700/mc3d_log.txt";
         // CSV dumps never overwrite: mc3d_profile_001.csv, _002, ... (first free number).
-        constexpr const char *kCsvPattern = "/luma/plugins/00040000001B8700/mc3d_profile_%03d.csv";
-        char s_csvPath[96] = "/luma/plugins/00040000001B8700/mc3d_profile_001.csv";
+        char s_csvPath[96] = "";      // set by the first recording (paths::Csv)
         constexpr u32 kDumpSeconds = 60;
 
         // ---- live counters (written by game threads) ----
@@ -305,15 +304,14 @@ namespace mc3d::prof
         // nothing). Now: past the cap the file is renamed to
         // mc3d_log_old.txt (replacing the previous old one) and a fresh one
         // is started, at boot or mid-session. Plugin thread only.
-        constexpr const char *kLogOldPath = "/luma/plugins/00040000001B8700/mc3d_log_old.txt";
         constexpr u64 kLogCap = 1024 * 1024;
         bool s_logBroken = false;           // rotation failed: stop writing this session
         u32  s_logRotations = 0;
 
         bool RotateLog()
         {
-            File::Remove(kLogOldPath);      // may not exist
-            return File::Rename(kLogPath, kLogOldPath) == File::SUCCESS;
+            File::Remove(paths::LogOld());      // may not exist
+            return File::Rename(paths::Log(), paths::LogOld()) == File::SUCCESS;
         }
 
         // v0.3.1: always-on fallback log. v0.3.0 wrote mc3d_log.txt only
@@ -573,14 +571,14 @@ namespace mc3d::prof
         if (s_logBroken || text.empty())
             return false;
         File f;
-        if (File::Open(f, kLogPath, File::WRITE | File::CREATE | File::APPEND) != File::SUCCESS)
+        if (File::Open(f, paths::Log(), File::WRITE | File::CREATE | File::APPEND) != File::SUCCESS)
             return false;
         std::string out;
         if (static_cast<u64>(f.GetSize()) > kLogCap)
         {
             f.Close();
             if (!RotateLog() ||
-                File::Open(f, kLogPath, File::WRITE | File::CREATE | File::APPEND) != File::SUCCESS)
+                File::Open(f, paths::Log(), File::WRITE | File::CREATE | File::APPEND) != File::SUCCESS)
             {
                 s_logBroken = true;     // keep the card tidy: never grow past the cap
                 return false;
@@ -687,7 +685,7 @@ namespace mc3d::prof
     void SetStereoMenuState(bool on) { s_stereoMenuOn = on; }
     bool Enabled()           { return s_enabled; }
     bool Active()            { return s_active; }
-    const char *LogPath()    { return kLogPath; }
+    const char *LogPath()    { return paths::Log(); }
     const char *CsvPath()    { return s_csvPath; }
 
     void StartDump()
@@ -700,7 +698,7 @@ namespace mc3d::prof
         int freeNo = 0;
         for (int i = 1; i <= 999 && !freeNo; i++)
         {
-            std::snprintf(s_csvPath, sizeof(s_csvPath), kCsvPattern, i);
+            paths::Csv(s_csvPath, sizeof(s_csvPath), i);
             if (File::Exists(s_csvPath) != 1)
                 freeNo = i;
         }
