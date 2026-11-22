@@ -9,7 +9,7 @@ with real per-pixel depth.
 
 > **A MattVidPro project.** Made for the [MattVidPro YouTube channel](https://www.youtube.com/@MattVidPro): Claude AI built it, and Matt directed and tested it on a real New 3DS XL.
 
-**In plain words:** Minecraft on the New 3DS never got 3D that works on the latest update. This mod turns it on, with comfort settings that keep it easy on the eyes. If your New 3DS already runs custom firmware (Luma3DS), installing it means copying one file to your SD card. **[Download it from the Releases page](https://github.com/mattvideoproductions/Minecraft3D/releases/latest)**, then follow the Quick install steps below.
+**In plain words:** Minecraft on the New 3DS never got 3D that works on the latest update. This mod turns it on, with comfort settings that keep it easy on the eyes. If your New 3DS already runs custom firmware (Luma3DS), installing it means copying one file to your SD card. Follow the Quick install steps below for your region.
 
 ## Features
 
@@ -41,10 +41,12 @@ with real per-pixel depth.
 
 ## Quick install
 
-1. Copy `Minecraft3D.3gx` to `SD:/luma/plugins/<title ID>/Minecraft3D.3gx`, where
+1. Get `Minecraft3D.3gx` for your region. The [v0.3.3 release](https://github.com/mattvideoproductions/Minecraft3D/releases/tag/v0.3.3)
+   supports USA only. For Europe/Australia, [build the plugin from the current source](plugin/BUILDING.md).
+2. Copy it to `SD:/luma/plugins/<title ID>/Minecraft3D.3gx`, where
    `<title ID>` is `00040000001B8700` (USA) or `000400000017CA00` (Europe/Australia).
-2. In the Rosalina menu (L + D-pad Down + SELECT), set "Plugin loader" to Enabled.
-3. Launch Minecraft, push the 3D slider up, and press **SELECT** for the plugin menu.
+3. In the Rosalina menu (L + D-pad Down + SELECT), set "Plugin loader" to Enabled.
+4. Launch Minecraft, push the 3D slider up, and press **SELECT** for the plugin menu.
 
 Full instructions, the config file and building from source: see [INSTALL.md](INSTALL.md).
 A test checklist for this release is in [releases/v0.3.3/HOW_TO_TEST.md](releases/v0.3.3/HOW_TO_TEST.md).

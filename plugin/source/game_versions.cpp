@@ -333,7 +333,7 @@ namespace mc3d::game
         .fnPadRead = 0x00112B34,
     };
 
-    // A build of another region with byte-identical code: same table, own name and title ID.
+    // A regional build with matching hook sites and data references gets its own name and title ID.
     static constexpr GameVersion SameCodeAs(GameVersion v, const char *name, u64 titleId)
     {
         v.name = name;
@@ -342,8 +342,8 @@ namespace mc3d::game
     }
 
     // ---- EU/AUS v9.11.0 (title 000400000017CA00, update 0004000E0017CA00 v9392, game 1.9.19) ----
-    // The EUR update is numbered 9.11.0 but carries the same 1.9.19 code as
-    // USA v9.12.0. Checked against the EUR update's decrypted code.bin
+    // The EUR 1.9.19 update can reuse the USA v9.12.0 address table.
+    // Checked against the EUR update's decrypted code.bin
     // (2026-11-07): identical exheader segments (text 0x818824, ro 0x10F464,
     // data 0x10B70, bss 0x1060C0); all 43 signatures above match at the same
     // addresses and each is unique; every site word and literal-pool word

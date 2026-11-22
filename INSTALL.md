@@ -11,8 +11,7 @@ The mod contains no game files. You need your own legally owned copy of the game
   loader is built into Luma3DS, so nothing else is needed. Old 3DS is not supported.
 - **Minecraft: New Nintendo 3DS Edition** with its final update (game 1.9.19), one of:
   - **USA**: title ID `00040000001B8700`, update **v9.12.0**
-  - **Europe/Australia**: title ID `000400000017CA00`, update **v9.11.0** (same game
-    code as the USA v9.12.0, only numbered differently)
+  - **Europe/Australia**: title ID `000400000017CA00`, update **v9.11.0**
 
 Other regions or versions are not patched: the plugin checks the game's code against its
 address tables and, if it does not match, stays idle (nothing is broken, nothing works).
@@ -30,7 +29,8 @@ The folder name is the title ID of your copy: `00040000001B8700` (USA) or
 
 ## Install
 
-1. Copy `releases/v0.3.3/Minecraft3D.3gx` to the path above.
+1. Copy `Minecraft3D.3gx` to the path above. For USA, use the v0.3.3 release or build
+   from source. For Europe/Australia, [build from the current source](plugin/BUILDING.md).
 2. Enable the plugin loader: open the Rosalina menu with **L + D-pad Down + SELECT**,
    choose "Plugin loader: [Disabled]" and press **A** so it reads Enabled. Luma
    remembers this.
