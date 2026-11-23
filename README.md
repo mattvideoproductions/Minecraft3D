@@ -1,4 +1,4 @@
-# Minecraft 3D (v0.3.3)
+# Minecraft 3D (v0.3.4)
 
 > 🎬 **Watch it in action:** [Claude Reverse Engineered Two 3DS Games to Add Real 3D](https://youtu.be/o5iRKvXZEcY) (YouTube)
 
@@ -41,15 +41,15 @@ with real per-pixel depth.
 
 ## Quick install
 
-1. Get `Minecraft3D.3gx` for your region. The [v0.3.3 release](https://github.com/mattvideoproductions/Minecraft3D/releases/tag/v0.3.3)
-   supports USA only. For Europe/Australia, [build the plugin from the current source](plugin/BUILDING.md).
+1. Download `Minecraft3D.3gx` from the [v0.3.4 prerelease](https://github.com/mattvideoproductions/Minecraft3D/releases/tag/v0.3.4).
+   The same file covers both regions. Europe/Australia hardware testing is pending.
 2. Copy it to `SD:/luma/plugins/<title ID>/Minecraft3D.3gx`, where
    `<title ID>` is `00040000001B8700` (USA) or `000400000017CA00` (Europe/Australia).
 3. In the Rosalina menu (L + D-pad Down + SELECT), set "Plugin loader" to Enabled.
 4. Launch Minecraft, push the 3D slider up, and press **SELECT** for the plugin menu.
 
 Full instructions, the config file and building from source: see [INSTALL.md](INSTALL.md).
-A test checklist for this release is in [releases/v0.3.3/HOW_TO_TEST.md](releases/v0.3.3/HOW_TO_TEST.md).
+The [v0.3.3 test checklist](releases/v0.3.3/HOW_TO_TEST.md) covers the existing 3D features.
 
 ## Known issues
 

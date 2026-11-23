@@ -1,4 +1,4 @@
-# Minecraft 3D mod v0.3.3: install guide
+# Minecraft 3D mod v0.3.4 install guide
 
 Minecraft 3D is a Luma3DS plugin (a `.3gx` file) that adds real stereoscopic 3D to
 Minecraft: New Nintendo 3DS Edition. This guide takes about five minutes.
@@ -29,8 +29,8 @@ The folder name is the title ID of your copy: `00040000001B8700` (USA) or
 
 ## Install
 
-1. Copy `Minecraft3D.3gx` to the path above. For USA, use the v0.3.3 release or build
-   from source. For Europe/Australia, [build from the current source](plugin/BUILDING.md).
+1. Download `Minecraft3D.3gx` from the [v0.3.4 prerelease](https://github.com/mattvideoproductions/Minecraft3D/releases/tag/v0.3.4)
+   and copy it to the path above. Europe/Australia hardware testing is pending.
 2. Enable the plugin loader: open the Rosalina menu with **L + D-pad Down + SELECT**,
    choose "Plugin loader: [Disabled]" and press **A** so it reads Enabled. Luma
    remembers this.
